@@ -370,12 +370,12 @@ void criarContribuinte(lista * listagem, listaContribuinte * listagemContribuint
         }
     }
 
-    cout << endl << "Qual e o ano? (maior que 2024)";
+    cout << endl << "Qual e o ano? (maior que 2024)" << endl;
     cin >> novoContribuinte->ano;
     auxLoopID=0;
     while( auxLoopID == 0 ) {
         if(novoContribuinte->ano <2024 ) {
-            cout << endl << "Qual e o ano? (Caso queria sair: Digite 0)";
+            cout << endl << "Qual e o ano? (Caso queria sair: Digite 0)" << endl;
             cin >> novoContribuinte->ano;
             if( novoContribuinte->ano == 0 ) {
                  return;
@@ -385,7 +385,7 @@ void criarContribuinte(lista * listagem, listaContribuinte * listagemContribuint
         }
     }
 
-    cout << endl << "Qual e o valor de contribuicao?";
+    cout << endl << "Qual e o valor de contribuicao?" << endl;
     cin >> novoContribuinte->valorContribuicao;
 
     if(listagemContribuinte->cont == 0 ) {
