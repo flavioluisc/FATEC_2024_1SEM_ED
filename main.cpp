@@ -18,7 +18,7 @@ struct node {
 };
 
 struct lista {
-    int qtd;
+    int cont;
     node * primeiroItem;
     node * ultimoItem;
 };
@@ -32,7 +32,7 @@ struct contribuinte {
 };
 
 struct listaContribuinte {
-    int qtd;
+    int cont;
     contribuinte * primeiroItem;
     contribuinte * ultimoItem;
 };
@@ -54,13 +54,13 @@ int main() {
     lista *listagem = new lista;
     listagem->primeiroItem = NULL;
     listagem->ultimoItem = NULL;
-    listagem->qtd = 0;
+    listagem->cont = 0;
 
     listaContribuinte * listagemContribuinte = new listaContribuinte;
 
     listagemContribuinte->primeiroItem = NULL;
     listagemContribuinte->ultimoItem = NULL;
-    listagemContribuinte->qtd =0;
+    listagemContribuinte->cont =0;
 
     int loopMenu = 0;
     while(loopMenu == 0) {
@@ -138,7 +138,7 @@ void inserirParticipante(lista *listagem, participante novoParticipante) {
     novoNode->item = novoParticipante;
 
     if(listagem->primeiroItem == NULL) {
-        listagem->qtd++;
+        listagem->cont++;
 
         if( novoParticipante.id == 0 ) {
             novoNode->item.id=1;
@@ -148,8 +148,8 @@ void inserirParticipante(lista *listagem, participante novoParticipante) {
         return;
     }
 
-    if( listagem->qtd == 1) {
-        listagem->qtd++;
+    if( listagem->cont == 1) {
+        listagem->cont++;
 
         if( novoParticipante.id == 0 ) {
             novoNode->item.id=2;
@@ -168,13 +168,13 @@ void inserirParticipante(lista *listagem, participante novoParticipante) {
         novoNode->anterior = listagem->ultimoItem;
         novoNode->anterior->proximo = novoNode;
         listagem->ultimoItem = novoNode;
-        listagem->qtd++;
+        listagem->cont++;
         return;
     }
 }
 
 void listarTudo(lista *listagem) {
-    if( listagem->qtd== 0) {
+    if( listagem->cont== 0) {
         cout << endl << "Nenhum aluno registrado!";
         return;
     }
@@ -304,7 +304,7 @@ void lerGravarArquivo(lista * listagem) {
 
 void gravarParticipantes(lista * listagem) {
 
-    if( listagem->qtd== 0) {
+    if( listagem->cont== 0) {
         cout << endl << "Nenhum aluno registrado!!!";
         return;
     }
@@ -332,7 +332,7 @@ void gravarParticipantes(lista * listagem) {
 void criarContribuinte(lista * listagem, listaContribuinte * listagemContribuinte) {
     contribuinte * novoContribuinte = new contribuinte;
 
-    if( listagem->qtd ==0) {
+    if( listagem->cont ==0) {
         cout << "Nenhum aluno cadastrado!";
         return;
     }
@@ -388,20 +388,20 @@ void criarContribuinte(lista * listagem, listaContribuinte * listagemContribuint
     cout << endl << "Qual e o valor de contribuicao?";
     cin >> novoContribuinte->valorContribuicao;
 
-    if(listagemContribuinte->qtd == 0 ) {
-        listagemContribuinte->qtd++;
+    if(listagemContribuinte->cont == 0 ) {
+        listagemContribuinte->cont++;
         listagemContribuinte->primeiroItem = novoContribuinte;
         listagemContribuinte->primeiroItem->proximoItem = NULL;
     }
 
-    if( listagemContribuinte->qtd == 1) {
-        listagemContribuinte->qtd++;
+    if( listagemContribuinte->cont == 1) {
+        listagemContribuinte->cont++;
         listagemContribuinte->ultimoItem = novoContribuinte;
         listagemContribuinte->primeiroItem->proximoItem = novoContribuinte;
     }
 
-    if( listagemContribuinte->qtd > 1) {
-        listagemContribuinte->qtd++;
+    if( listagemContribuinte->cont > 1) {
+        listagemContribuinte->cont++;
         listagemContribuinte->ultimoItem->proximoItem = novoContribuinte;
         listagemContribuinte->ultimoItem = novoContribuinte;
          listagemContribuinte->ultimoItem->proximoItem = NULL;
@@ -409,7 +409,7 @@ void criarContribuinte(lista * listagem, listaContribuinte * listagemContribuint
 }
 
 void gravarContribuientes(listaContribuinte * listagemContribuinte) {
-    if( listagemContribuinte->qtd == 0) {
+    if( listagemContribuinte->cont == 0) {
         cout << endl << "Nenhum aluno registrado!" << endl;
         return;
     }
@@ -430,7 +430,7 @@ void gravarContribuientes(listaContribuinte * listagemContribuinte) {
     }
     fclose(txt);
 
-    if( listagemContribuinte->qtd == 0) return;
+    if( listagemContribuinte->cont == 0) return;
 
     itemTemp = listagemContribuinte->primeiroItem;
     cout << itemTemp->proximoItem;
@@ -445,12 +445,12 @@ void gravarContribuientes(listaContribuinte * listagemContribuinte) {
 }
 
 void gravarContribuientesPorCurso(listaContribuinte * listagemContribuinte, lista * listagem) {
-    if(listagemContribuinte->qtd == 0) {
+    if(listagemContribuinte->cont == 0) {
         cout << endl <<"Sem contribuicoes!";
         return;
     }
 
-     if( listagemContribuinte->qtd== 0) {
+     if( listagemContribuinte->cont== 0) {
         cout << endl << "Nenhum aluno registrado!";
         return;
     }
